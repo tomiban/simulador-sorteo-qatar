@@ -126,6 +126,4 @@ function bienvenida() {
 	mostrarMenu();
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-	bienvenida();
-});
+bienvenida();
