@@ -126,4 +126,7 @@ function bienvenida() {
 	mostrarMenu();
 }
 
-bienvenida();
+
+ setTimeout(() => {
+	bienvenida()	
+}, 3000);
