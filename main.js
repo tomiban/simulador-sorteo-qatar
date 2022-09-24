@@ -58,11 +58,11 @@ function sacarBolilla(bombo) {
 
 function realizarSorteo() {
 	const repetidos = [];
-
+	console.log('\n------------------------------------\n');
 	for (let i = 0; i < 8; i++) {
 		console.log('GRUPO ' + (i + 1));
 		for (let j = 0; j < 4; j++) {
-			let flag = 0; //VALIDACION REPETIDOS ---> Mientras bandera no entre en el if, va a seguir buscando nros al azar en el case que le toque
+			let flag = 0; //VALIDACION REPETIDOS ---> Mientras bandera no entre en el if, sigue buscando nros al azar en el case que le toque
 			while (flag != 1) {
 				const idEquipoSorteado = sacarBolilla(j); // paso por paramaetro el iterador j que coincide con el nro de bombos y equipos x grupo
 
@@ -85,7 +85,6 @@ function mostrarEquipos() {
 	for (let i = 0; i < 32; i++) {
 		const equipo = selecciones[i];
 		console.log(i + 1 + ') ' + equipo);
-		// document.write(`<p>${i + 1}- ${equipo}</p>`);
 	}
 	console.log('\n');
 	mostrarMenu();
@@ -100,7 +99,9 @@ function mostrarMenu() {
 	console.log('====================================');
 
 	let opcionMenu = Number(
-		prompt('MENU PRINCIPAL: ¿Que operacion deseas realizar?')
+		prompt(
+			`MENU PRINCIPAL: ¿Que operacion deseas realizar? \n 1. Mostrar equipos participantes\n 2. Realizar sorteo\n 3. Salir`
+		)
 	);
 
 	switch (opcionMenu) {
@@ -126,7 +127,6 @@ function bienvenida() {
 	mostrarMenu();
 }
 
-
- setTimeout(() => {
-	bienvenida()	
-}, 3000);
+setTimeout(() => {
+	bienvenida();
+}, 2000);
