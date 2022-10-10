@@ -1,37 +1,164 @@
 const selecciones = [
-	'Qatar',
-	'Belgica',
-	'Brasil',
-	'Francia',
-	'Argentina',
-	'Inglaterra',
-	'España',
-	'Portugal',
-	'Dinamarca',
-	'Holanda',
-	'Alemania',
-	'Suiza',
-	'Croacia',
-	'Uruguay',
-	'Mexico',
-	'Estados Unidos',
-	'Iran',
-	'Japon',
-	'Serbia',
-	'Corea',
-	'Tunez',
-	'Polonia',
-	'Marruecos',
-	'Senegal',
-	'Arabia',
-	'Ecuador',
-	'Ghana',
-	'Canada',
-	'Camerun',
-	'Gales',
-	'Australia',
-	'Costa Rica',
+	{
+		id: 1,
+		nombre: 'Qatar',
+	},
+	{
+		id: 2,
+		nombre: 'Belgica',
+	},
+	{
+		id: 3,
+		nombre: 'Brasil',
+	},
+	{
+		id: 4,
+		nombre: 'Francia',
+	},
+	{
+		id: 5,
+		nombre: 'Argentina',
+	},
+	{
+		id: 7,
+		nombre: 'Inglaterra',
+	},
+	{
+		id: 8,
+		nombre: 'España',
+	},
+	{
+		id: 9,
+		nombre: 'Portugal',
+	},
+	{
+		id: 10,
+		nombre: 'Dinamarca',
+	},
+	{
+		id: 11,
+		nombre: 'Holanda',
+	},
+	{
+		id: 12,
+		nombre: 'Alemania',
+	},
+	{
+		id: 13,
+		nombre: 'Suiza',
+	},
+	{
+		id: 14,
+		nombre: 'Croacia',
+	},
+	{
+		id: 15,
+		nombre: 'Uruguay',
+	},
+	{
+		id: 16,
+		nombre: 'Mexico',
+	},
+	{
+		id: 17,
+		nombre: 'Estados Unidos',
+	},
+	{
+		id: 18,
+		nombre: 'Japon',
+	},
+	{
+		id: 19,
+		nombre: 'Serbia',
+	},
+	{
+		id: 20,
+		nombre: 'Corea',
+	},
+	{
+		id: 21,
+		nombre: 'Tunez',
+	},
+	{
+		id: 22,
+		nombre: 'Polonia',
+	},
+	{
+		id: 23,
+		nombre: 'Marruecos',
+	},
+	{
+		id: 24,
+		nombre: 'Senegal',
+	},
+	{
+		id: 25,
+		nombre: 'Arabia',
+	},
+	{
+		id: 26,
+		nombre: 'Ecuador',
+	},
+	{
+		id: 27,
+		nombre: 'Ghana',
+	},
+	{
+		id: 28,
+		nombre: 'Canada',
+	},
+	{
+		id: 29,
+		nombre: 'Camerun',
+	},
+	{
+		id: 30,
+		nombre: 'Gales',
+	},
+	{
+		id: 31,
+		nombre: 'Australia',
+	},
+	{
+		id: 32,
+		nombre: 'Costa Rica',
+	},
 ];
+
+const grupos = [
+	{
+		id: 1,
+		equipos: []
+	},
+	{
+		id: 2,
+		equipos: []
+	},
+	{
+		id: 3,
+		equipos: []
+	},
+	{
+		id: 4,
+		equipos: []
+	},
+	{
+		id: 5,
+		equipos: []
+	},
+	{
+		id: 6,
+		equipos: []
+	},
+	{
+		id: 7,
+		equipos: []
+	},
+	{
+		id: 8,
+		equipos: []
+	},
+]
 
 function nroAleatorio(min, max) {
 	min = Math.ceil(min);
@@ -43,90 +170,40 @@ function nroAleatorio(min, max) {
 function sacarBolilla(bombo) {
 	switch (bombo) {
 		case 0:
-			return nroAleatorio(0, 8);
+			return nroAleatorio(1, 8);
 
 		case 1:
-			return nroAleatorio(8, 16);
+			return nroAleatorio(9, 18);
 
 		case 2:
-			return nroAleatorio(16, 24);
+			return nroAleatorio(19, 25);
 
 		case 3:
-			return nroAleatorio(24, 32);
+			return nroAleatorio(26, 32);
 	}
 }
 
-function realizarSorteo() {
+//NO FUNCIONA VALDIACION (PROBAR CON FILTER)
+const realizarSorteo = grupos.forEach(grupo => {
 	const repetidos = [];
-	console.log('\n------------------------------------\n');
-	for (let i = 0; i < 8; i++) {
-		console.log('GRUPO ' + (i + 1));
-		for (let j = 0; j < 4; j++) {
-			let flag = 0; //VALIDACION REPETIDOS ---> Mientras bandera no entre en el if, sigue buscando nros al azar en el case que le toque
+		for (let i = 0; i < 4; i++) {
+			let flag = 0; 
 			while (flag != 1) {
-				const idEquipoSorteado = sacarBolilla(j); // paso por paramaetro el iterador j que coincide con el nro de bombos y equipos x grupo
-
+				const idEquipoSorteado = sacarBolilla(i); // 3 - 13 - 22- 30
 				if (!repetidos.includes(idEquipoSorteado)) {
-					// si el nro no se encuentra en el arreglo repetidos, pintamos el equipo
 					repetidos.push(idEquipoSorteado);
-					console.log(selecciones[idEquipoSorteado]);
+					//pushear seleccion.id a grupos.equipos
+					selecciones.map(equipo => {
+						if (equipo.id === idEquipoSorteado) {
+							grupo.equipos.push(equipo)
+							
+						}
+					})
 					flag = 1;
 				}
 			}
 		}
-		console.log('------------------------------------');
-	}
-	alert('Sorteo realizado!');
-	mostrarMenu();
-}
-
-function mostrarEquipos() {
-	console.log('\nSELECCIONES CLASIFICADAS:');
-	for (let i = 0; i < 32; i++) {
-		const equipo = selecciones[i];
-		console.log(i + 1 + ') ' + equipo);
-	}
-	console.log('\n');
-	mostrarMenu();
-}
-
-//Menu de opciones al que se llama siempre que terminamos alguna tarea.
-function mostrarMenu() {
-	console.log('===========MENU PRINCIPAL=========== ');
-	console.log('| 1. Mostrar equipos participantes |');
-	console.log('| 2. Realizar sorteo               | ');
-	console.log('| 3. Salir                         |');
-	console.log('====================================');
-
-	let opcionMenu = Number(
-		prompt(
-			`MENU PRINCIPAL: ¿Que operacion deseas realizar? \n 1. Mostrar equipos participantes\n 2. Realizar sorteo\n 3. Salir`
-		)
-	);
-
-	switch (opcionMenu) {
-		case 1:
-			//Imprime todos los equipos participantes del mundial
-			mostrarEquipos();
-			break;
-		case 2:
-			//Sortea aleatoriamente todos los equipos en 8 grupos sin repetir los equipos
-			realizarSorteo();
-			break;
-		case 3:
-			alert('¡Gracias por participar!');
-			break;
-		default:
-			alert('Opcion inválida. Intente nuevamente');
-			mostrarMenu();
-	}
-}
-
-function bienvenida() {
-	alert('¡Bienvenidos al sorteo del mundial Qatar 2022!');
-	mostrarMenu();
-}
-
-setTimeout(() => {
-	bienvenida();
-}, 2000);
+		return
+	});
+	console.log(grupos)
+	
