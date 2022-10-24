@@ -279,6 +279,8 @@ const pintarGrupos = (timeOut) => {
 
 		grupos.forEach(grupo => (grupo.equipos = []));
 	}, timeOut);
+
+	btnSortear.textContent = 'Volver a sortear'
 };
 
 btnSortear.addEventListener('click', () => {
@@ -294,5 +296,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		spinner.classList.add('d-none');
 	}
 })
-
 
