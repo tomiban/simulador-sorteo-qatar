@@ -1,0 +1,164 @@
+{
+    "selecciones": [
+        {
+            "id": 1,
+            "nombre": "Qatar",
+            "bandera": "https://flagcdn.com/qa.svg"
+        },
+        {
+            "id": 2,
+            "nombre": "Belgica",
+            "bandera": "https://flagcdn.com/be.svg"
+        },
+        {
+            "id": 3,
+            "nombre": "Brasil",
+            "bandera": "https://flagcdn.com/br.svg"
+        },
+        {
+            "id": 4,
+            "nombre": "Francia",
+            "bandera": "https://flagcdn.com/fr.svg"
+        },
+        {
+            "id": 5,
+            "nombre": "Argentina",
+            "bandera": "https://flagcdn.com/ar.svg"
+        },
+        {
+            "id": 6,
+            "nombre": "Inglaterra",
+            "bandera": "https://flagcdn.com/gb-eng.svg"
+        },
+        {
+            "id": 7,
+            "nombre": "España",
+            "bandera": "https://flagcdn.com/es.svg"
+        },
+        {
+            "id": 8,
+            "nombre": "Portugal",
+            "bandera": "https://flagcdn.com/pt.svg"
+        },
+        {
+            "id": 9,
+            "nombre": "Dinamarca",
+            "bandera": "https://flagcdn.com/dk.svg"
+        },
+        {
+            "id": 10,
+            "nombre": "Holanda",
+            "bandera": "https://flagcdn.com/nl.svg"
+        },
+        {
+            "id": 11,
+            "nombre": "Alemania",
+            "bandera": "https://flagcdn.com/de.svg"
+        },
+        {
+            "id": 12,
+            "nombre": "Suiza",
+            "bandera": "https://flagcdn.com/ch.svg"
+        },
+        {
+            "id": 13,
+            "nombre": "Croacia",
+            "bandera": "https://flagcdn.com/hr.svg"
+        },
+        {
+            "id": 14,
+            "nombre": "Uruguay",
+            "bandera": "https://flagcdn.com/uy.svg"
+        },
+        {
+            "id": 15,
+            "nombre": "Mexico",
+            "bandera": "https://flagcdn.com/mx.svg"
+        },
+        {
+            "id": 16,
+            "nombre": "Estados Unidos",
+            "bandera": "https://flagcdn.com/us.svg"
+        },
+        {
+            "id": 17,
+            "nombre": "Iran",
+            "bandera": "https://flagcdn.com/ir.svg"
+        },
+        {
+            "id": 18,
+            "nombre": "Japon",
+            "bandera": "https://flagcdn.com/jp.svg"
+        },
+        {
+            "id": 19,
+            "nombre": "Serbia",
+            "bandera": "https://flagcdn.com/rs.svg"
+        },
+        {
+            "id": 20,
+            "nombre": "Corea del Sur",
+            "bandera": "https://flagcdn.com/kr.svg"
+        },
+        {
+            "id": 21,
+            "nombre": "Tunez",
+            "bandera": "https://flagcdn.com/tn.svg"
+        },
+        {
+            "id": 22,
+            "nombre": "Polonia",
+            "bandera": "https://flagcdn.com/pl.svg"
+        },
+        {
+            "id": 23,
+            "nombre": "Marruecos",
+            "bandera": "https://flagcdn.com/ma.svg"
+        },
+        {
+            "id": 24,
+            "nombre": "Senegal",
+            "bandera": "https://flagcdn.com/sn.svg"
+        },
+        {
+            "id": 25,
+            "nombre": "Arabia",
+            "bandera": "https://flagcdn.com/sa.svg"
+        },
+        {
+            "id": 26,
+            "nombre": "Ecuador",
+            "bandera": "https://flagcdn.com/ec.svg"
+        },
+        {
+            "id": 27,
+            "nombre": "Ghana",
+            "bandera": "https://flagcdn.com/gh.svg"
+        },
+        {
+            "id": 28,
+            "nombre": "Canada",
+            "bandera": "https://flagcdn.com/ca.svg"
+        },
+        {
+            "id": 29,
+            "nombre": "Camerun",
+            "bandera": "https://flagcdn.com/cm.svg"
+        },
+        {
+            "id": 30,
+            "nombre": "Gales",
+            "bandera": "https://flagcdn.com/gb-wls.svg"
+        },
+        {
+            "id": 31,
+            "nombre": "Australia",
+            "bandera": "https://flagcdn.com/au.svg"
+        },
+        {
+            "id": 32,
+            "nombre": "Costa Rica",
+            "bandera": "https://flagcdn.com/cr.svg"
+        }
+    ]
+}
