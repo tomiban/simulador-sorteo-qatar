@@ -3,161 +3,193 @@
         {
             "id": 1,
             "nombre": "Qatar",
+            "confederacion": "AFC",
             "bandera": "https://flagcdn.com/qa.svg"
         },
         {
             "id": 2,
             "nombre": "Belgica",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/be.svg"
         },
         {
             "id": 3,
             "nombre": "Brasil",
+            "confederacion": "CONMEBOL",
             "bandera": "https://flagcdn.com/br.svg"
         },
         {
             "id": 4,
             "nombre": "Francia",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/fr.svg"
         },
         {
             "id": 5,
             "nombre": "Argentina",
+            "confederacion": "CONMEBOL",
             "bandera": "https://flagcdn.com/ar.svg"
         },
         {
             "id": 6,
             "nombre": "Inglaterra",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/gb-eng.svg"
         },
         {
             "id": 7,
             "nombre": "España",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/es.svg"
         },
         {
             "id": 8,
             "nombre": "Portugal",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/pt.svg"
         },
         {
             "id": 9,
             "nombre": "Dinamarca",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/dk.svg"
         },
         {
             "id": 10,
             "nombre": "Holanda",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/nl.svg"
         },
         {
             "id": 11,
             "nombre": "Alemania",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/de.svg"
         },
         {
             "id": 12,
             "nombre": "Suiza",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/ch.svg"
         },
         {
             "id": 13,
             "nombre": "Croacia",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/hr.svg"
         },
         {
             "id": 14,
             "nombre": "Uruguay",
+            "confederacion": "CONMEBOL",
             "bandera": "https://flagcdn.com/uy.svg"
         },
         {
             "id": 15,
             "nombre": "Mexico",
+            "confederacion": "CONCACAF",
             "bandera": "https://flagcdn.com/mx.svg"
         },
         {
             "id": 16,
             "nombre": "Estados Unidos",
+            "confederacion": "CONCACAF",
             "bandera": "https://flagcdn.com/us.svg"
         },
         {
             "id": 17,
             "nombre": "Iran",
+            "confederacion": "AFC",
             "bandera": "https://flagcdn.com/ir.svg"
         },
         {
             "id": 18,
             "nombre": "Japon",
+            "confederacion": "AFC",
             "bandera": "https://flagcdn.com/jp.svg"
         },
         {
             "id": 19,
             "nombre": "Serbia",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/rs.svg"
         },
         {
             "id": 20,
             "nombre": "Corea del Sur",
+            "confederacion": "AFC",
             "bandera": "https://flagcdn.com/kr.svg"
         },
         {
             "id": 21,
             "nombre": "Tunez",
+            "confederacion": "CAF",
             "bandera": "https://flagcdn.com/tn.svg"
         },
         {
             "id": 22,
             "nombre": "Polonia",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/pl.svg"
         },
         {
             "id": 23,
             "nombre": "Marruecos",
+            "confederacion": "CAF",
             "bandera": "https://flagcdn.com/ma.svg"
         },
         {
             "id": 24,
             "nombre": "Senegal",
+            "confederacion": "CAF",
             "bandera": "https://flagcdn.com/sn.svg"
         },
         {
             "id": 25,
             "nombre": "Arabia",
+            "confederacion": "AFC",
             "bandera": "https://flagcdn.com/sa.svg"
         },
         {
             "id": 26,
             "nombre": "Ecuador",
+            "confederacion": "CONMEBOL",
             "bandera": "https://flagcdn.com/ec.svg"
         },
         {
             "id": 27,
             "nombre": "Ghana",
+            "confederacion": "CAF",
             "bandera": "https://flagcdn.com/gh.svg"
         },
         {
             "id": 28,
             "nombre": "Canada",
+            "confederacion": "CONCACAF",
             "bandera": "https://flagcdn.com/ca.svg"
         },
         {
             "id": 29,
             "nombre": "Camerun",
+            "confederacion": "CAF",
             "bandera": "https://flagcdn.com/cm.svg"
         },
         {
             "id": 30,
             "nombre": "Gales",
+            "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/gb-wls.svg"
         },
         {
             "id": 31,
             "nombre": "Australia",
+            "confederacion": "AFC",
             "bandera": "https://flagcdn.com/au.svg"
         },
         {
             "id": 32,
             "nombre": "Costa Rica",
+            "confederacion": "CONCACAF",
             "bandera": "https://flagcdn.com/cr.svg"
         }
     ]

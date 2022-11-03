@@ -11,11 +11,11 @@ body {
 
   @font-face {
     font-family: arabic-bold;
-    src: url(./fonts/Qatar2022Arabic-Bold.ttf);
+    src: url(../fonts/Qatar2022Arabic-Bold.ttf);
   }
   @font-face {
     font-family: arabic-heavy;
-    src: url(./fonts/Qatar2022Arabic-Heavy.ttf);
+    src: url(../fonts/Qatar2022Arabic-Heavy.ttf);
   }
   
   .bandera {
