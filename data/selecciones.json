@@ -48,6 +48,8 @@
             "confederacion": "UEFA",
             "bandera": "https://flagcdn.com/pt.svg"
         },
+        
+
         {
             "id": 9,
             "nombre": "Dinamarca",
@@ -96,6 +98,8 @@
             "confederacion": "CONCACAF",
             "bandera": "https://flagcdn.com/us.svg"
         },
+
+
         {
             "id": 17,
             "nombre": "Iran",
@@ -122,9 +126,9 @@
         },
         {
             "id": 21,
-            "nombre": "Tunez",
-            "confederacion": "CAF",
-            "bandera": "https://flagcdn.com/tn.svg"
+            "nombre": "Canada",
+            "confederacion": "CONCACAF",
+            "bandera": "https://flagcdn.com/ca.svg"
         },
         {
             "id": 22,
@@ -144,6 +148,7 @@
             "confederacion": "CAF",
             "bandera": "https://flagcdn.com/sn.svg"
         },
+        
         {
             "id": 25,
             "nombre": "Arabia",
@@ -164,9 +169,9 @@
         },
         {
             "id": 28,
-            "nombre": "Canada",
-            "confederacion": "CONCACAF",
-            "bandera": "https://flagcdn.com/ca.svg"
+            "nombre": "Tunez",
+            "confederacion": "CAF",
+            "bandera": "https://flagcdn.com/tn.svg"
         },
         {
             "id": 29,
@@ -176,21 +181,21 @@
         },
         {
             "id": 30,
-            "nombre": "Gales",
-            "confederacion": "UEFA",
-            "bandera": "https://flagcdn.com/gb-wls.svg"
-        },
-        {
-            "id": 31,
             "nombre": "Australia",
             "confederacion": "AFC",
             "bandera": "https://flagcdn.com/au.svg"
         },
         {
-            "id": 32,
+            "id": 31,
             "nombre": "Costa Rica",
             "confederacion": "CONCACAF",
             "bandera": "https://flagcdn.com/cr.svg"
+        },
+        {
+            "id": 32,
+            "nombre": "Gales",
+            "confederacion": "UEFA",
+            "bandera": "https://flagcdn.com/gb-wls.svg"
         }
     ]
 }

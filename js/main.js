@@ -58,7 +58,7 @@ function nroAleatorio(min, max) {
 function sacarBolilla(bombo) {
 	switch (bombo) {
 		case 0:
-			return nroAleatorio(1, 8);
+			return nroAleatorio(2, 8);
 		case 1:
 			return nroAleatorio(9, 16);
 
@@ -72,21 +72,71 @@ function sacarBolilla(bombo) {
 
 const realizarSorteo = json => {
 	const repetidos = [];
+
+	grupos[0].equipos.push(json.selecciones[0]);
+
 	grupos.forEach(grupo => {
-		for (let i = 0; i < 4; i++) {
+		const contadores = {
+			UEFA: 0,
+			CONMEBOL: 0,
+			CONCACAF: 0,
+			AFC: grupo.id === 1 ? 1 : 0,
+			CAF: 0,
+		};
+
+		for (let i = grupo.id === 1 ? 1 : 0; i < 4; i++) {
 			let flag = 0;
 			while (flag === 0) {
 				const idEquipoSorteado = sacarBolilla(i);
-
 				if (!repetidos.includes(idEquipoSorteado)) {
-					repetidos.push(idEquipoSorteado);
-					//pushear seleccion.id a grupos.equipos
 					const equipo = json.selecciones.find(
 						equipo => equipo.id === idEquipoSorteado
 					);
 
-					grupo.equipos.push(equipo);
-					flag = 1;
+					const { UEFA, CONMEBOL, CONCACAF, AFC, CAF } = contadores;
+
+					switch (equipo.confederacion) {
+						case 'UEFA':
+							if (UEFA < 2) {
+								repetidos.push(idEquipoSorteado);
+								contadores[equipo.confederacion]++;
+								grupo.equipos.push(equipo);
+								flag = 1;
+							}
+							break;
+						case 'CONMEBOL':
+							if (CONMEBOL < 1) {
+								repetidos.push(idEquipoSorteado);
+								contadores[equipo.confederacion]++;
+								grupo.equipos.push(equipo);
+								flag = 1;
+							}
+							break;
+						case 'CONCACAF':
+							if (CONCACAF < 1) {
+								repetidos.push(idEquipoSorteado);
+								contadores[equipo.confederacion]++;
+								grupo.equipos.push(equipo);
+								flag = 1;
+							}
+							break;
+						case 'AFC':
+							if (AFC < 1) {
+								repetidos.push(idEquipoSorteado);
+								contadores[equipo.confederacion]++;
+								grupo.equipos.push(equipo);
+								flag = 1;
+							}
+							break;
+						case 'CAF':
+							if (CAF < 1) {
+								repetidos.push(idEquipoSorteado);
+								contadores[equipo.confederacion]++;
+								grupo.equipos.push(equipo);
+								flag = 1;
+							}
+							break;
+					}
 				}
 			}
 		}
