@@ -41,7 +41,7 @@ const fragment = document.createDocumentFragment();
 
 const fetchData = async () => {
 	try {
-		const res = await fetch('../data/selecciones.json');
+		const res = await fetch('./data/selecciones.json');
 		const data = await res.json();
 		realizarSorteo(data);
 	} catch (error) {
