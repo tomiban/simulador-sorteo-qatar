@@ -160,9 +160,8 @@ const realizarSorteo = json => {
 
 const pintarGrupos = timeOut => {
 	const spinner = document.querySelector('#spinner');
-	
-	spinner.classList.remove('d-none');
 
+	spinner.classList.remove('d-none');
 
 	setTimeout(() => {
 		spinner.classList.add('d-none');
@@ -194,8 +193,6 @@ const pintarGrupos = timeOut => {
 		btnSortear.textContent = 'Volver a sortear';
 		btnSortear.classList.remove('d-none');
 	}, timeOut);
-
-
 };
 
 const initApp = () => {
@@ -213,7 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	btnSortear.addEventListener('click', () => {
 		btnSortear.className += ' d-none';
-
 		if (btnSortear.textContent === 'Sortear') {
 			initApp();
 			return;
@@ -221,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		Swal.fire({
 			title: '¿Quieres reiniciar el sorteo?',
-			text: '¡Se perderan los resultados!',
+			text: '¡Se modificaran los resultados!',
 			iconHtml:
 				'<img src="./img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
 			showCancelButton: true,
