@@ -1,35 +1,35 @@
 let grupos = [
 	{
 		id: 1,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 2,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 3,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 4,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 5,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 6,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 7,
-		equipos: [],
+		selecciones: [],
 	},
 	{
 		id: 8,
-		equipos: [],
+		selecciones: [],
 	},
 ];
 
@@ -70,10 +70,16 @@ function sacarBolilla(bombo) {
 	}
 }
 
+function reiniciarSorteo() {
+	grupos.forEach(grupo => {
+		grupo.selecciones = [];
+	});
+}
+
 const realizarSorteo = json => {
 	const repetidos = [];
 
-	grupos[0].equipos.push(json.selecciones[0]);
+	grupos[0].selecciones.push(json.selecciones[0]);
 
 	grupos.forEach(grupo => {
 		const contadores = {
@@ -82,6 +88,7 @@ const realizarSorteo = json => {
 			CONCACAF: 0,
 			AFC: grupo.id === 1 ? 1 : 0,
 			CAF: 0,
+			ATTEMPS: 0,
 		};
 
 		for (let i = grupo.id === 1 ? 1 : 0; i < 4; i++) {
@@ -93,14 +100,20 @@ const realizarSorteo = json => {
 						equipo => equipo.id === idEquipoSorteado
 					);
 
-					const { UEFA, CONMEBOL, CONCACAF, AFC, CAF } = contadores;
+					const { UEFA, CONMEBOL, CONCACAF, AFC, CAF, ATTEMPS } = contadores;
+
+					if (ATTEMPS === 100) {
+						reiniciarSorteo();
+						realizarSorteo(json);
+						return;
+					}
 
 					switch (equipo.confederacion) {
 						case 'UEFA':
 							if (UEFA < 2) {
 								repetidos.push(idEquipoSorteado);
 								contadores[equipo.confederacion]++;
-								grupo.equipos.push(equipo);
+								grupo.selecciones.push(equipo);
 								flag = 1;
 							}
 							break;
@@ -108,7 +121,7 @@ const realizarSorteo = json => {
 							if (CONMEBOL < 1) {
 								repetidos.push(idEquipoSorteado);
 								contadores[equipo.confederacion]++;
-								grupo.equipos.push(equipo);
+								grupo.selecciones.push(equipo);
 								flag = 1;
 							}
 							break;
@@ -116,7 +129,7 @@ const realizarSorteo = json => {
 							if (CONCACAF < 1) {
 								repetidos.push(idEquipoSorteado);
 								contadores[equipo.confederacion]++;
-								grupo.equipos.push(equipo);
+								grupo.selecciones.push(equipo);
 								flag = 1;
 							}
 							break;
@@ -124,7 +137,7 @@ const realizarSorteo = json => {
 							if (AFC < 1) {
 								repetidos.push(idEquipoSorteado);
 								contadores[equipo.confederacion]++;
-								grupo.equipos.push(equipo);
+								grupo.selecciones.push(equipo);
 								flag = 1;
 							}
 							break;
@@ -132,11 +145,12 @@ const realizarSorteo = json => {
 							if (CAF < 1) {
 								repetidos.push(idEquipoSorteado);
 								contadores[equipo.confederacion]++;
-								grupo.equipos.push(equipo);
+								grupo.selecciones.push(equipo);
 								flag = 1;
 							}
 							break;
 					}
+					contadores['ATTEMPS']++;
 				}
 			}
 		}
@@ -154,14 +168,14 @@ const pintarGrupos = timeOut => {
 		grupos.map(grupo => {
 			templateGrupos.querySelector('h5').textContent = `GRUPO ${grupo.id}`;
 			templateGrupos.querySelector('.list-group').innerHTML = '';
-			grupo.equipos.forEach(equipo => {
+			grupo.selecciones.forEach(seleccion => {
 				templateGrupos.querySelector('.list-group').innerHTML += `
 				<li
 				class="list-group-item d-flex align-items-center justify-content-evenly">
 				<div class='mx-1'<></div>
-				<div class="mx-0 bandera"><img class="text-center" src="${equipo.bandera}"></div>
+				<div class="mx-0 bandera"><img class="text-center" src="${seleccion.bandera}"></div>
 				<div class="text-center" style="width:155px;">
-				<span class="lead">${equipo.nombre}</span>
+				<span class="lead">${seleccion.nombre}</span>
 				</div>
 				</li>
 				`;
@@ -173,10 +187,16 @@ const pintarGrupos = timeOut => {
 		});
 		divGrupos.appendChild(fragment);
 
-		grupos.forEach(grupo => (grupo.equipos = []));
+		grupos.forEach(grupo => (grupo.selecciones = []));
 	}, timeOut);
 
 	btnSortear.textContent = 'Volver a sortear';
+};
+
+const initApp = () => {
+	divGrupos.innerHTML = '';
+	fetchData();
+	pintarGrupos(1000);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -187,8 +207,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	btnSortear.addEventListener('click', () => {
-		fetchData();
-		divGrupos.innerHTML = '';
-		pintarGrupos(1000);
+		if (btnSortear.textContent === 'Sortear') {
+			initApp();
+			return;
+		}
+
+		Swal.fire({
+			title: '¿Quieres reiniciar el sorteo?',
+			text: '¡Se perderan los resultados!',
+			iconHtml:
+				'<img src="../img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Aceptar',
+		}).then(result => {
+			if (result.isConfirmed) {
+				initApp();
+			}
+		});
 	});
 });
