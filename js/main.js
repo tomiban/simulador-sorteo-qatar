@@ -160,7 +160,9 @@ const realizarSorteo = json => {
 
 const pintarGrupos = timeOut => {
 	const spinner = document.querySelector('#spinner');
+	
 	spinner.classList.remove('d-none');
+
 
 	setTimeout(() => {
 		spinner.classList.add('d-none');
@@ -188,9 +190,12 @@ const pintarGrupos = timeOut => {
 		divGrupos.appendChild(fragment);
 
 		grupos.forEach(grupo => (grupo.selecciones = []));
+
+		btnSortear.textContent = 'Volver a sortear';
+		btnSortear.classList.remove('d-none');
 	}, timeOut);
 
-	btnSortear.textContent = 'Volver a sortear';
+
 };
 
 const initApp = () => {
@@ -207,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	btnSortear.addEventListener('click', () => {
+		btnSortear.className += ' d-none';
+
 		if (btnSortear.textContent === 'Sortear') {
 			initApp();
 			return;
@@ -225,6 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		}).then(result => {
 			if (result.isConfirmed) {
 				initApp();
+			} else {
+				btnSortear.classList.remove('d-none');
 			}
 		});
 	});
