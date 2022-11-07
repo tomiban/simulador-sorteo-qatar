@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			title: '¿Quieres reiniciar el sorteo?',
 			text: '¡Se perderan los resultados!',
 			iconHtml:
-				'<img src="../img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
+				'<img src="./img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
