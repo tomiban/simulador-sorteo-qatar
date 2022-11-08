@@ -29,3 +29,21 @@ body {
     width:100%;
     height:100%;
   }
+
+  .card-pattern {
+    background-image: url('../img/qatar-pattern.png');
+    
+  }
+
+  .card-body {
+    background-color: rgba(0, 0, 0, 0.481);
+  }
+
+  .list-group-item {
+    padding: 10px !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: white !important;
+    border: none !important;
+    border-bottom: 1px whitesmoke solid !important;
+    border-radius: 5px !important ;
+  }
