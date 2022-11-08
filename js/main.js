@@ -264,7 +264,6 @@ btnSortear.addEventListener('click', () => {
 	}).then(result => {
 		if (result.isConfirmed) {
 			realizarSorteo(bombos)
-			divGrupos.innerHTML = '';
 			pintarGrupos(1000)
 		} else {
 			btnSortear.classList.remove('d-none');
