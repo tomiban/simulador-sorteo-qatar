@@ -208,17 +208,17 @@ const pintarGrupos = timeOut => {
 
 	setTimeout(() => {
 		spinner.classList.add('d-none');
-
+		
 		grupos.map(grupo => {
 			templateGrupos.querySelector('h5').textContent = `GRUPO ${grupo.id}`;
 			templateGrupos.querySelector('.list-group').innerHTML = '';
 			grupo.selecciones.forEach(seleccion => {
 				templateGrupos.querySelector('.list-group').innerHTML += `
 				<li
-				class="list-group-item d-flex align-items-center justify-content-evenly">
-				<div class='mx-1'<></div>
+				class="list-group-item d-flex">
+				<div class='mx-2'<></div>
 				<div class="mx-0 bandera"><img class="text-center" src="${seleccion.bandera}"></div>
-				<div class="text-center" style="width:155px;">
+				<div class="text-start mx-3" style="width:155px;">
 				<span class="lead">${seleccion.nombre}</span>
 				</div>
 				</li>
@@ -229,7 +229,7 @@ const pintarGrupos = timeOut => {
 
 			fragment.appendChild(clone);
 		});
-		divGrupos.innerHTML = ''
+		
 		divGrupos.appendChild(fragment);
 
 		grupos.forEach(grupo => (grupo.selecciones = []));
@@ -246,8 +246,9 @@ const initApp = data => {
 btnSortear.addEventListener('click', () => {
 	btnSortear.className += ' d-none';
 	if (btnSortear.textContent === 'Sortear') {
+		divGrupos.innerHTML = ''
 		realizarSorteo(bombos);
-		pintarGrupos(1000);
+		pintarGrupos(2000);
 		return;
 	}
 
@@ -261,10 +262,14 @@ btnSortear.addEventListener('click', () => {
 		cancelButtonColor: '#d33',
 		cancelButtonText: 'Cancelar',
 		confirmButtonText: 'Aceptar',
+		customClass: {
+			title: 'custom-title-class',
+		  }
 	}).then(result => {
 		if (result.isConfirmed) {
+			divGrupos.innerHTML = ''
 			realizarSorteo(bombos)
-			pintarGrupos(1000)
+			pintarGrupos(2000)
 		} else {
 			btnSortear.classList.remove('d-none');
 		}
