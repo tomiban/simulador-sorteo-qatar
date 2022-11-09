@@ -1,49 +1,77 @@
 body {
-    background: rgb(138, 21, 56);
-    background: linear-gradient(
-      135deg,
-      rgba(138, 21, 56, 1) 0%,
-      rgba(28, 1, 10, 1) 100%
-    );
-    min-height: 100vh;
-    font-family: arabic-bold !important;
-  }
+	background: rgb(138, 21, 56);
+	background: linear-gradient(
+		135deg,
+		rgba(138, 21, 56, 1) 0%,
+		rgba(28, 1, 10, 1) 100%
+	);
+	min-height: 100vh;
+	font-family: arabic-bold !important;
+}
 
-  @font-face {
-    font-family: arabic-bold;
-    src: url(../fonts/Qatar2022Arabic-Bold.ttf);
-  }
-  @font-face {
-    font-family: arabic-heavy;
-    src: url(../fonts/Qatar2022Arabic-Heavy.ttf);
-  }
+@font-face {
+	font-family: arabic-bold;
+	src: url(../fonts/Qatar2022Arabic-Bold.ttf);
+}
+@font-face {
+	font-family: arabic-heavy;
+	src: url(../fonts/Qatar2022Arabic-Heavy.ttf);
+}
+
+.bandera {
+	width: 50px;
+	height: 30px;
+	border: 1px solid black;
+}
+
+.bandera img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/* ESTILOS DE BOMBOS */
+
+.card-pattern {
+	background-image: url('../img/qatar-pattern.png');
+}
+
+#bombos .card-body {
+	background-color: rgba(0, 0, 0, 0.481);
   
-  .bandera {
-    width: 50px;
-    height: 30px;
-    border: 1px solid black;
-  }
+}
 
-  .bandera img {
-    object-fit: cover;
-    width:100%;
-    height:100%;
-  }
+#bombos .list-group-item {
+	padding: 10px !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	color: white !important;
+  text-shadow:  1px 1px black;
+	border: none !important;
+	border-bottom: 1px whitesmoke solid !important;
+	border-radius: 5px !important ;
+}
 
-  .card-pattern {
-    background-image: url('../img/qatar-pattern.png');
-    
-  }
+/* ESTILOS DE GRUPOS */
+#grupos .card-body {
+	background: #bbd2c5; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#536976,
+		#bbd2c5
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#536976,
+		#bbd2c5
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
-  .card-body {
-    background-color: rgba(0, 0, 0, 0.481);
-  }
-
-  .list-group-item {
-    padding: 10px !important;
-    background-color: rgba(0, 0, 0, 0) !important;
-    color: white !important;
-    border: none !important;
-    border-bottom: 1px whitesmoke solid !important;
-    border-radius: 5px !important ;
-  }
+#grupos .list-group-item {
+	padding: 10px !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	color: white !important;
+  text-shadow: 1px 1px black;
+	border: none !important;
+	border-bottom: 1px whitesmoke solid !important;
+	border-radius: 5px !important ;
+}
