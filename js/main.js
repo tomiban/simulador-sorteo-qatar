@@ -53,9 +53,11 @@ let grupos = [
 ];
 
 const btnSortear = document.querySelector('.btn-primary');
-
+const btnReglas = document.querySelector('.btn-warning');
+const divReglas = document.querySelector('#divReglas');
 const divGrupos = document.querySelector('#divGrupos');
-const article = document.querySelector('#article');
+const article = document.getElementsByTagName('article');
+const templateReglas = document.querySelector('#templateReglas').content;
 const templateBombos = document.querySelector('#templateBombos').content;
 const templateGrupos = document.querySelector('#templateGrupos').content;
 
@@ -63,7 +65,7 @@ const fetchData = async () => {
 	try {
 		const res = await fetch('./data/selecciones.json');
 		const data = await res.json();
-		initApp(data);
+		pintarBombos(data);
 	} catch (error) {
 		console.log(error);
 	}
@@ -83,7 +85,7 @@ function reiniciarSorteo() {
 	grupos.forEach(grupo => {
 		grupo.selecciones.length = 0;
 	});
-	realizarSorteo(bombos)
+	realizarSorteo(bombos);
 }
 
 function limiteConfederacion(idGrupoSorteado, seleccion) {
@@ -124,7 +126,7 @@ const realizarSorteo = bombos => {
 			let ATTEMPS = 0;
 			let flag = 0;
 			while (flag === 0) {
-				ATTEMPS++
+				ATTEMPS++;
 				let idGrupoSorteado = sacarBolilla();
 				//Omito al anfitrion del sorteo
 				if (seleccion.nombre === 'Qatar') {
@@ -145,8 +147,8 @@ const realizarSorteo = bombos => {
 				}
 				//si el sorteo queda imposibilitado por el max de conferencias se hace de nuevo (ERROR --< pushea los equipos restantes del sorteo fallado)
 				if (ATTEMPS === 100) {
-					reiniciarSorteo()
-					return
+					reiniciarSorteo();
+					return;
 				}
 			}
 		});
@@ -155,8 +157,9 @@ const realizarSorteo = bombos => {
 	localStorage.setItem('grupos', JSON.stringify(grupos));
 };
 
-
 const pintarBombos = data => {
+	divGrupos.innerHTML = ''
+
 	const selecciones = data.selecciones;
 	selecciones.forEach(seleccion => {
 		if (seleccion.id <= 8) {
@@ -200,7 +203,6 @@ const pintarBombos = data => {
 };
 
 const pintarGrupos = timeOut => {
-	
 	const fragment = document.createDocumentFragment();
 	const spinner = document.querySelector('#spinner');
 
@@ -208,7 +210,7 @@ const pintarGrupos = timeOut => {
 
 	setTimeout(() => {
 		spinner.classList.add('d-none');
-		
+
 		grupos.map(grupo => {
 			templateGrupos.querySelector('h5').textContent = `GRUPO ${grupo.id}`;
 			templateGrupos.querySelector('.list-group').innerHTML = '';
@@ -229,59 +231,79 @@ const pintarGrupos = timeOut => {
 
 			fragment.appendChild(clone);
 		});
-		
+
 		divGrupos.appendChild(fragment);
 
 		grupos.forEach(grupo => (grupo.selecciones = []));
 
 		btnSortear.textContent = 'Volver a sortear';
 		btnSortear.classList.remove('d-none');
+		btnReglas.classList.remove('d-none');
 	}, timeOut);
 };
 
-const initApp = data => {
-	pintarBombos(data);
-};
+btnReglas.addEventListener('click', e => {
+	divReglas.classList.remove('d-none');
+	divGrupos.classList.add('d-none');
+	btnReglas.classList.add('d-none');
+	btnSortear.textContent = 'Ir al Sorteo'
+	bombos.forEach(bombo => bombo.selecciones.length = 0)
+});
 
 btnSortear.addEventListener('click', () => {
-	btnSortear.className += ' d-none';
-	if (btnSortear.textContent === 'Sortear') {
-		divGrupos.innerHTML = ''
-		realizarSorteo(bombos);
-		pintarGrupos(2000);
-		return;
-	}
+	//Oculto div reglas, muestro bombos o grupos
 
-	Swal.fire({
-		title: '¿Quieres reiniciar el sorteo?',
-		text: '¡Se modificaran los resultados!',
-		iconHtml:
-			'<img src="./img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Aceptar',
-		customClass: {
-			title: 'custom-title-class',
-		  }
-	}).then(result => {
-		if (result.isConfirmed) {
-			divGrupos.innerHTML = ''
-			realizarSorteo(bombos)
-			pintarGrupos(2000)
-		} else {
-			btnSortear.classList.remove('d-none');
+
+	divReglas.classList.add('d-none');
+	divGrupos.classList.remove('d-none');
+	
+	if (btnSortear.textContent === 'Ir al Sorteo') {
+		fetchData();
+		btnSortear.textContent = 'Sortear';
+		btnReglas.classList.remove('d-none')
+	} else {
+		if (btnSortear.textContent === 'Sortear') {
+			divGrupos.innerHTML = '';
+			realizarSorteo(bombos);
+			pintarGrupos(2000);
 		}
-	});
+
+		if (btnSortear.textContent === 'Volver a sortear') {
+			Swal.fire({
+				title: '¿Quieres reiniciar el sorteo?',
+				text: '¡Se modificaran los resultados!',
+				iconHtml:
+					'<img src="./img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				cancelButtonText: 'Cancelar',
+				confirmButtonText: 'Aceptar',
+				customClass: {
+					title: 'custom-title-class',
+				},
+			}).then(result => {
+				if (result.isConfirmed) {
+					divGrupos.innerHTML = '';
+					realizarSorteo(bombos);
+					pintarGrupos(2000);
+				} else {
+					btnSortear.classList.remove('d-none');
+					btnReglas.classList.remove('d-none');
+				}
+			});
+		}
+
+
+}
 });
 
 document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('grupos')) {
+		divReglas.classList.add('d-none')
+		divGrupos.classList.remove('d-none')
 		grupos = JSON.parse(localStorage.getItem('grupos'));
 		pintarGrupos(0);
 		spinner.classList.add('d-none');
-	} else {
-		fetchData();
 	}
 });

@@ -26,8 +26,42 @@
 				</div>
 			</section>
 			<section
-				class=" row d-flex flex-column align-items-center justify-content-center m-2">
-				<div id="divGrupos" class="row d-flex justify-content-center mt-1 ">
+				class="row d-flex flex-column align-items-center justify-content-center m-2">
+				<div id="divReglas" class="col-10">
+					<h2 class="text-warning">Reglas</h2>
+					<hr class="m-0" style="color: rgba(255, 255, 255, 0.455);"">
+					<div class="mt-3">
+						<p class="text-white">
+							A partir de 32 selecciones divididas en 4 bombos según su posición
+							en el ranking FIFA, se sortean para generar 8 grupos, con 4
+							selecciones cada una, donde se respetan las siguientes reglas:
+						</p>
+						<div>
+							<ul class="text-white">
+								<li class="py-2">
+									El anfitrión Catar siempre ocupará la primera posición del
+									grupo A Cada selección del bombo 1 ocupará siempre la primera
+									posición del grupo donde fue asignado (por ejemplo, si Francia
+									cae en el grupo B, será cabeza de grupo de ese grupo).
+								</li>
+								<li class="py-2">
+									Las selecciones de los bombos restantes no necesariamente
+									ocuparán un lugar en específico en el grupo (por ejemplo,
+									México que pertenece al bombo 2, puede estar en la posición 2,
+									3 o 4 del grupo).
+								</li>
+								<li class="py-2">
+									No puede haber más de 2 selecciones de la misma confederación
+									en un mismo grupo (por ejemplo, Brasil y Argentina no pueden
+									estar en el mismo grupo porque ambas pertenecen a la CONMEBOL).
+									A excepción de la confederación europea, donde máximo se
+									permiten 2 selecciones en el mismo grupo.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="divGrupos" class="row d-flex justify-content-center mt-1 d-none">
 					
 				</div>
 
@@ -44,19 +78,23 @@
 						<div class="sk-cube sk-cube7"></div>
 						<div class="sk-cube sk-cube8"></div>
 						<div class="sk-cube sk-cube9"></div>
-					  </div>
+					</div>
 				</div>
 
 				<div
 					id="btn"
 					class="col-10 col-md-6 col-lg-4 mx-auto p-5 d-flex align-items-center justify-content-center">
-					<button class="btn btn-primary btn-lg px-5">Sortear</button>
+					<button class="btn btn-warning btn-lg px-4 mx-1 d-none">Reglas</button>
+					<button class="btn btn-primary btn-lg mx-1">Ir al Sorteo</button>
 				</div>
 			</section>
 
+			<template id="templateReglas">
+				
+			</template>
 			<template id="templateBombos">
-				<article class="col-7 col-md-6 col-lg-3 mt-3">
-					<div class="card  card-pattern">
+				<article class="col-7 col-md-6 col-lg-3 mt-3 cardBombos">
+					<div class="card card-pattern">
 						<div class="card-body">
 							<h5 class="card-title text-center text-white fw-bold fs-3">
 								BOMBO 1
@@ -64,9 +102,7 @@
 							<ul class="list-group" id="bombos">
 								<li class="list-group-item d-flex">
 									<div class="bandera">
-										<img
-											class="text-center"
-											src="https://flagcdn.com/qa.svg" />
+										<img class="text-center" src="https://flagcdn.com/qa.svg" />
 									</div>
 									<div class="text-center" style="width: 155px">
 										<span class="lead">Qatar</span>
@@ -78,11 +114,12 @@
 				</article>
 			</template>
 			<template id="templateGrupos">
-				<article class="col-7 col-md-6 col-lg-3 mt-3" >
+				<article class="col-7 col-md-6 col-lg-3 mt-3 cardGrupos">
 					<div class="card" id="grupos">
-						<div class="card-body" >
+						<div class="card-body">
 							<h5
-								class="card-title text-center fw-bold fs-3" style="color: #f7b308; text-shadow: 1px 1px 2px black;"></h5>
+								class="card-title text-center fw-bold fs-3"
+								style="color: #f7b308; text-shadow: 1px 1px 2px black"></h5>
 							<ul class="list-group" id="grupos"></ul>
 						</div>
 					</div>
