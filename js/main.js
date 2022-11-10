@@ -97,7 +97,7 @@ function limiteConfederacion(idGrupoSorteado, seleccion) {
 		CAF: 0,
 	};
 
-	grupos[idGrupoSorteado].selecciones.forEach(equipo => {
+	grupos[idGrupoSorteado]?.selecciones.forEach(equipo => {
 		contadores[equipo.confederacion]++;
 	});
 
@@ -130,7 +130,7 @@ const realizarSorteo = bombos => {
 				let idGrupoSorteado = sacarBolilla();
 				//Omito al anfitrion del sorteo
 				if (seleccion.nombre === 'Qatar') {
-					grupos[0].selecciones.push(seleccion);
+					grupos[0]?.selecciones.push(seleccion);
 					idGrupoSorteado = 0;
 					repetidos.push(0);
 					flag = 1;
@@ -198,11 +198,11 @@ const pintarBombos = data => {
 
 		fragment.appendChild(clone);
 	});
-
 	divGrupos.appendChild(fragment);
 };
 
 const pintarGrupos = timeOut => {
+	divGrupos.innerHTML = '';
 	const fragment = document.createDocumentFragment();
 	const spinner = document.querySelector('#spinner');
 
@@ -243,11 +243,11 @@ const pintarGrupos = timeOut => {
 };
 
 btnReglas.addEventListener('click', e => {
+	bombos.forEach(bombo => (bombo.selecciones.length = 0));
 	divReglas.classList.remove('d-none');
 	divGrupos.classList.add('d-none');
 	btnReglas.classList.add('d-none');
 	btnSortear.textContent = 'Ir al Sorteo';
-	bombos.forEach(bombo => (bombo.selecciones.length = 0));
 });
 
 btnSortear.addEventListener('click', () => {
@@ -256,45 +256,55 @@ btnSortear.addEventListener('click', () => {
 	divGrupos.classList.remove('d-none');
 
 	if (btnSortear.textContent === 'Ir al Sorteo') {
-		fetchData();
-		btnSortear.textContent = 'Sortear';
-		btnReglas.classList.remove('d-none');
-	} else {
-		if (btnSortear.textContent === 'Sortear') {
-			divGrupos.innerHTML = '';
-			realizarSorteo(bombos);
-			pintarGrupos(2000);
-			btnReglas.classList.add('d-none');
-			btnSortear.classList.add('d-none');
+		//Si hay un local storage cargado con grupos muestro los grupos
+		if (localStorage.getItem('grupos')) {
+			grupos = JSON.parse(localStorage.getItem('grupos'));
+			pintarGrupos(0);
+			divReglas.classList.add('d-none');
+			divGrupos.classList.remove('d-none');
+			btnReglas.classList.remove('d-none');
+			btnSortear.textContent = 'Volver a Sortear';
+		} else {
+			// Si no armo los bombos
+			fetchData();
+			btnSortear.textContent = 'Sortear';
+			btnSortear.classList.remove('d-none');
+			btnReglas.classList.remove('d-none');
 		}
+	} else if (btnSortear.textContent === 'Sortear') {
+		divGrupos.innerHTML = '';
+		realizarSorteo(bombos);
+		pintarGrupos(2000);
+		btnReglas.classList.add('d-none');
+		btnSortear.classList.add('d-none');
+	}
 
-		if (btnSortear.textContent === 'Volver a sortear') {
-			btnReglas.classList.add('d-none');
-			btnSortear.classList.add('d-none');
-			Swal.fire({
-				title: '¿Quieres reiniciar el sorteo?',
-				text: '¡Se modificaran los resultados!',
-				iconHtml:
-					'<img src="./img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				cancelButtonText: 'Cancelar',
-				confirmButtonText: 'Aceptar',
-				customClass: {
-					title: 'custom-title-class',
-				},
-			}).then(result => {
-				if (result.isConfirmed) {
-					divGrupos.innerHTML = '';
-					realizarSorteo(bombos);
-					pintarGrupos(2000);
-				} else {
-					btnSortear.classList.remove('d-none');
-					btnReglas.classList.remove('d-none');
-				}
-			});
-		}
+	if (btnSortear.textContent === 'Volver a sortear') {
+		btnReglas.classList.add('d-none');
+		btnSortear.classList.add('d-none');
+		Swal.fire({
+			title: '¿Quieres reiniciar el sorteo?',
+			text: '¡Se modificaran los resultados!',
+			iconHtml:
+				'<img src="./img/world-cup2.png" class="rounded-circle border border-3  border-dark">',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Aceptar',
+			customClass: {
+				title: 'custom-title-class',
+			},
+		}).then(result => {
+			if (result.isConfirmed) {
+				divGrupos.innerHTML = '';
+				realizarSorteo(bombos);
+				pintarGrupos(2000);
+			} else {
+				btnSortear.classList.remove('d-none');
+				btnReglas.classList.remove('d-none');
+			}
+		});
 	}
 });
 
