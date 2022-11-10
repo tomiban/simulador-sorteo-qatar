@@ -57,7 +57,7 @@ const btnReglas = document.querySelector('.btn-warning');
 const divReglas = document.querySelector('#divReglas');
 const divGrupos = document.querySelector('#divGrupos');
 const article = document.getElementsByTagName('article');
-const templateReglas = document.querySelector('#templateReglas').content;
+
 const templateBombos = document.querySelector('#templateBombos').content;
 const templateGrupos = document.querySelector('#templateGrupos').content;
 
@@ -158,7 +158,7 @@ const realizarSorteo = bombos => {
 };
 
 const pintarBombos = data => {
-	divGrupos.innerHTML = ''
+	divGrupos.innerHTML = '';
 
 	const selecciones = data.selecciones;
 	selecciones.forEach(seleccion => {
@@ -237,8 +237,8 @@ const pintarGrupos = timeOut => {
 		grupos.forEach(grupo => (grupo.selecciones = []));
 
 		btnSortear.textContent = 'Volver a sortear';
-		btnSortear.classList.remove('d-none');
 		btnReglas.classList.remove('d-none');
+		btnSortear.classList.remove('d-none');
 	}, timeOut);
 };
 
@@ -246,29 +246,31 @@ btnReglas.addEventListener('click', e => {
 	divReglas.classList.remove('d-none');
 	divGrupos.classList.add('d-none');
 	btnReglas.classList.add('d-none');
-	btnSortear.textContent = 'Ir al Sorteo'
-	bombos.forEach(bombo => bombo.selecciones.length = 0)
+	btnSortear.textContent = 'Ir al Sorteo';
+	bombos.forEach(bombo => (bombo.selecciones.length = 0));
 });
 
 btnSortear.addEventListener('click', () => {
 	//Oculto div reglas, muestro bombos o grupos
-
-
 	divReglas.classList.add('d-none');
 	divGrupos.classList.remove('d-none');
-	
+
 	if (btnSortear.textContent === 'Ir al Sorteo') {
 		fetchData();
 		btnSortear.textContent = 'Sortear';
-		btnReglas.classList.remove('d-none')
+		btnReglas.classList.remove('d-none');
 	} else {
 		if (btnSortear.textContent === 'Sortear') {
 			divGrupos.innerHTML = '';
 			realizarSorteo(bombos);
 			pintarGrupos(2000);
+			btnReglas.classList.add('d-none');
+			btnSortear.classList.add('d-none');
 		}
 
 		if (btnSortear.textContent === 'Volver a sortear') {
+			btnReglas.classList.add('d-none');
+			btnSortear.classList.add('d-none');
 			Swal.fire({
 				title: '¿Quieres reiniciar el sorteo?',
 				text: '¡Se modificaran los resultados!',
@@ -293,15 +295,13 @@ btnSortear.addEventListener('click', () => {
 				}
 			});
 		}
-
-
-}
+	}
 });
 
 document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('grupos')) {
-		divReglas.classList.add('d-none')
-		divGrupos.classList.remove('d-none')
+		divReglas.classList.add('d-none');
+		divGrupos.classList.remove('d-none');
 		grupos = JSON.parse(localStorage.getItem('grupos'));
 		pintarGrupos(0);
 		spinner.classList.add('d-none');
