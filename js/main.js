@@ -145,7 +145,7 @@ const realizarSorteo = bombos => {
 						}
 					}
 				}
-				//si el sorteo queda imposibilitado por el max de conferencias se hace de nuevo (ERROR --< pushea los equipos restantes del sorteo fallado)
+				//Si el sorteo queda imposibilitado por el max de conferencias se hace de nuevo (ERROR --< pushea los equipos restantes del sorteo fallado, no se como arreglarlo y coderAsk no me dio respuesta!)
 				if (ATTEMPS === 100) {
 					reiniciarSorteo();
 					return;
