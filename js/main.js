@@ -65,7 +65,7 @@ const fetchData = async () => {
 	try {
 		const res = await fetch('./data/selecciones.json');
 		const data = await res.json();
-		pintarBombos(data);
+		confeccionarBombos(data);
 	} catch (error) {
 		console.log(error);
 	}
@@ -157,9 +157,8 @@ const realizarSorteo = bombos => {
 	localStorage.setItem('grupos', JSON.stringify(grupos));
 };
 
-const pintarBombos = data => {
-	divGrupos.innerHTML = '';
 
+const confeccionarBombos = data => {
 	const selecciones = data.selecciones;
 	selecciones.forEach(seleccion => {
 		if (seleccion.id <= 8) {
@@ -175,6 +174,11 @@ const pintarBombos = data => {
 			bombos[3].selecciones.push(seleccion);
 		}
 	});
+}
+
+const pintarBombos = () => {
+	
+	divGrupos.innerHTML = '';
 
 	const fragment = document.createDocumentFragment();
 
@@ -243,7 +247,6 @@ const pintarGrupos = timeOut => {
 };
 
 btnReglas.addEventListener('click', e => {
-	bombos.forEach(bombo => (bombo.selecciones.length = 0));
 	divReglas.classList.remove('d-none');
 	divGrupos.classList.add('d-none');
 	btnReglas.classList.add('d-none');
@@ -266,7 +269,7 @@ btnSortear.addEventListener('click', () => {
 			btnSortear.textContent = 'Volver a Sortear';
 		} else {
 			// Si no armo los bombos
-			fetchData();
+			pintarBombos()
 			btnSortear.textContent = 'Sortear';
 			btnSortear.classList.remove('d-none');
 			btnReglas.classList.remove('d-none');
@@ -316,4 +319,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		pintarGrupos(0);
 		spinner.classList.add('d-none');
 	}
+	fetchData()
 });
