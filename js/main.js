@@ -297,6 +297,7 @@ btnSortear.addEventListener('click', () => {
 			confirmButtonText: 'Aceptar',
 			customClass: {
 				title: 'custom-title-class',
+				iconHtml: 'custom-icon-class'
 			},
 		}).then(result => {
 			if (result.isConfirmed) {
